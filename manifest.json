@@ -1,0 +1,30 @@
+{
+   "background": {
+      "scripts": ["bg.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icons/icon.png",
+      "default_popup": "popup.html",
+      "default_title": "jsproxy助手"
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": [ "jsproxyassistant.js" , "jquery.min.js"],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'",
+   "default_locale": "zh_CN",
+   "description": "简单的jsproxy助手",
+   "icons": {
+      "128": "icons/icon-128.png",
+      "16": "icons/icon.png"
+   },
+   "manifest_version": 2,
+   "minimum_chrome_version": "18.0.0",
+   "name": "jsproxy助手",
+   "options_page": "options.html",
+   "permissions": [ "storage", "proxy", "tabs", "contextMenus", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "notifications", "\u003Call_urls>", "http://*/*", "https://*/*", "ftp://*/*" ],
+   "version": "0.0.1",
+   "web_accessible_resources": [ "options.html" ]
+}

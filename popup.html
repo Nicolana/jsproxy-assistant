@@ -1,0 +1,184 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>jsproxy助手</title>
+        <style type="text/css">
+            body {
+                margin: 0;
+                color: #345;
+                font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
+                font-size: 9pt;
+            }
+
+            body * {
+                white-space: nowrap;
+            }
+            #about {
+                font-size: 10pt;
+                padding: 10px 20px;
+            }
+            #about a {
+                cursor: pointer;
+                text-decoration: blink;
+                color: #4285f4;
+                outline : none;
+            }
+
+            #about .footer {
+                height: 15px;
+                color: #789;
+                margin: 5px;
+                padding-top: 5px;
+                border-top: solid 1px #eef;
+                white-space: nowrap;
+            }
+        
+            #about #tips{
+                color: red;
+                font-size: 16px;
+                display: block;
+                padding-bottom: 5px;
+            }
+
+            .popup_copyright{
+                text-align: center;
+            }
+            .options{
+                height: 100px;
+                width: 165px;
+            }
+            /* Switch 4 Specific Style Start */
+            .input_wrapper{
+              /*width: 70px;*/
+              height: 30px;
+              position: relative;
+              cursor: pointer;
+            }
+
+            .input_wrapper input[type="checkbox"]{
+              width: 50px;
+              height: 25px;
+              cursor: pointer;
+              -webkit-appearance: none;
+                 -moz-appearance: none;
+                      appearance: none;
+              background: #315e7f;
+              border-radius: 2px;
+              position: relative;
+              outline: 0;
+              -webkit-transition: all .2s;
+              transition: all .2s;
+            }
+
+            .input_wrapper input[type="checkbox"]:after{
+              position: absolute;
+              content: "";
+              top: 3px;
+              left: 3px;
+              width: 20px;
+              height: 20px;
+              background: #dfeaec;
+              z-index: 2;
+              border-radius: 2px;
+              -webkit-transition: all .35s;
+              transition: all .35s;
+            }
+
+            .input_wrapper svg{
+              position: absolute;
+              top: 50%;
+              -webkit-transform-origin: 50% 50%;
+                      transform-origin: 50% 50%;
+              fill: #fff;
+              -webkit-transition: all .35s;
+              transition: all .35s;
+              z-index: 1;
+            }
+
+            .input_wrapper .is_checked{
+              width: 11px;
+              left: 20%;
+              -webkit-transform: translateX(190%) translateY(-30%) scale(0);
+                      transform: translateX(190%) translateY(-30%) scale(0);
+            }
+
+            .input_wrapper .is_unchecked{
+              width: 11px;
+              left: 61%;
+              -webkit-transform: translateX(0) translateY(-30%) scale(1);
+                      transform: translateX(0) translateY(-30%) scale(1);
+            }
+
+            /* Checked State */
+            .input_wrapper input[type="checkbox"]:checked{
+              background: #23da87;
+            }
+
+            .input_wrapper input[type="checkbox"]:checked:after{
+              left: calc(100% - 24px);
+            }
+
+            .input_wrapper input[type="checkbox"]:checked + .is_checked{
+              -webkit-transform: translateX(0) translateY(-30%) scale(1);
+                      transform: translateX(0) translateY(-30%) scale(1);
+            }
+
+            .input_wrapper input[type="checkbox"]:checked ~ .is_unchecked{
+              -webkit-transform: translateX(-190%) translateY(-30%) scale(0);
+                      transform: translateX(-190%) translateY(-30%) scale(0);
+            }
+
+            /* Switch 4 Specific Style End */
+            div#options-hello {
+              display: inline-block;
+            }
+
+            .options-item>div {
+                float: left;
+            }
+
+            div#options-hello {}
+
+            div#options-hello {
+                height: 30px;
+                line-height: 29px;
+                text-align: center;
+                vertical-align: middle;
+                margin-left: 10px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="about">
+            <div class="body">
+                <div class="options">
+                  <div class="options-item">
+                    <div class="switch_box box_4">
+                        <div class="input_wrapper">
+                            <input type="checkbox" class="switch_4" id="checkbox-switch">
+                            <svg class="is_checked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 426.67 426.67" class="check-icon">
+                          <path d="M153.504 366.84c-8.657 0-17.323-3.303-23.927-9.912L9.914 237.265c-13.218-13.218-13.218-34.645 0-47.863 13.218-13.218 34.645-13.218 47.863 0l95.727 95.727 215.39-215.387c13.218-13.214 34.65-13.218 47.86 0 13.22 13.218 13.22 34.65 0 47.863L177.435 356.928c-6.61 6.605-15.27 9.91-23.932 9.91z"/>
+                        </svg>
+                            <svg class="is_unchecked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212.982 212.982" class="check-icon">
+                          <path d="M131.804 106.49l75.936-75.935c6.99-6.99 6.99-18.323 0-25.312-6.99-6.99-18.322-6.99-25.312 0L106.49 81.18 30.555 5.242c-6.99-6.99-18.322-6.99-25.312 0-6.99 6.99-6.99 18.323 0 25.312L81.18 106.49 5.24 182.427c-6.99 6.99-6.99 18.323 0 25.312 6.99 6.99 18.322 6.99 25.312 0L106.49 131.8l75.938 75.937c6.99 6.99 18.322 6.99 25.312 0 6.99-6.99 6.99-18.323 0-25.313l-75.936-75.936z" fill-rule="evenodd" clip-rule="evenodd"/>
+                        </svg>
+
+                          </div>
+                    </div>
+                    <div id="options-hello">
+                        <span id="options-checkbox">开关jsproxy代理</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="popup_copyright">
+                     Copyright &copy; 2019 <a target="_blank" href="http://blog.zklighting.ltd">之一</a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script src="popup.js"></script>
+    </body>
+</html>
