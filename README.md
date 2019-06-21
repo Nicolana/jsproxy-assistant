@@ -1,6 +1,6 @@
 <p align="center"><img width="15%" src="icons/icon-128.png" /></p>
 <h1 align="center">jsproxy助手</h1>
-  [jsproxy](https://github.com/EtherDream/jsproxy)是一款很棒的前端代理，jsproxy助手则是一款辅助jsproxy使用的chrome插件，帮助你更方便的使用jsproxy代理程序。
+  [jsproxy](https://github.com/EtherDream/jsproxy) 是一款很棒的前端代理，jsproxy助手则是一款辅助jsproxy使用的chrome插件，帮助你更方便的使用jsproxy代理程序。
 
 ## 安装说明
 
