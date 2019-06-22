@@ -24,7 +24,7 @@
    "minimum_chrome_version": "18.0.0",
    "name": "jsproxy助手",
    "options_page": "options.html",
-   "permissions": [ "storage", "proxy", "tabs", "contextMenus", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "notifications", "\u003Call_urls>", "http://*/*", "https://*/*", "ftp://*/*" ],
+   "permissions": [ "storage","proxy", "tabs", "contextMenus", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "notifications", "\u003Call_urls>", "http://*/*", "https://*/*", "ftp://*/*" ],
    "version": "0.0.1",
    "web_accessible_resources": [ "options.html" ]
 }

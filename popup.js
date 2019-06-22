@@ -1,12 +1,16 @@
+var default_prefix = "https://jsproxy.ga/";
 
-function redirect_to(method){
-	// chrome.extension.sendMessage({method: "redirect_to_" + method}, function(response){});
+function jsPrefix(){
+	// if there is a proxy alread, return it directly,
+	// if not, this function gonna settings the default proxy to 
+	// localstorage with key jsproxy_prefix, and return it
 
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-		chrome.tabs.sendMessage(tabs[0].id, {method: "redirect_to_" + method}, function(response){
-			return true;
-		});
-	})
+	var prefix = localStorage.getItem('jsproxy_prefix');
+	if (prefix != null){
+		return prefix;
+	}
+	localStorage.setItem("jsproxy_prefix", default_prefix)
+	return default_prefix;
 }
 
 var status = localStorage.getItem("status");
@@ -29,14 +33,21 @@ $("#checkbox-switch").on("click", function(event){
 	// console.log(this.checked);
 	var _this = this;
 	localStorage.setItem("status", _this.checked);
-
-	if (_this.checked == false){
-		// var prefix = localStorage.getItem("jsproxy_prefix");
-		var url = window.location.href;
-		var a = url.split("-----");
-		redirect_to("url");
-	} else if (_this.checked == true){
-		var prefix = localStorage.getItem("jsproxy_prefix");
-		redirect_to("proxy");
-	}
+	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function(tabs) {
+			var url = tabs[0].url;
+			var jp = jsPrefix();
+			if (_this.checked == false){
+				if (url.indexOf(jp) != -1){
+					var _ = url.split("-----");
+					var host = _[_.length - 1];
+					chrome.tabs.update({
+						url: host
+					})
+				}
+			} else {
+				chrome.tabs.update({
+					url: jp + "-----" + url
+				})
+			}
+	})
 })
